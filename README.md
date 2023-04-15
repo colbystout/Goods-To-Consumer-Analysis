@@ -12,13 +12,13 @@ In this project, I pretended I was given a task by the Vice President of Logists
 ## Data Structure
 
 The "thelook_ecommerce" database in the Google BigQuery open datasets environment consists of 6 tables:
-- distribution_centers (dimension) - *as the name describes*
-- events (fact) - *web data as it applies to each users' purchase*
-- inventory_items (dimension) - *items contained in inventory*
-- order_items (fact) - *the items within each order*
-- orders (fact) - *orders made and the orders' attributes*
-- products (dimension) - *products and their attributes*
-- users (dimension) - *customers*
+- **distribution_centers (dimension)** - *as the name describes*
+- **events (fact)** - *web data as it applies to each users' purchase*
+- **inventory_items (dimension)** - *items contained in inventory*
+- **order_items (fact)** - *the items within each order*
+- **orders (fact)** - *orders made and the orders' attributes*
+- **products (dimension)** - *products and their attributes*
+- **users (dimension)** - *customers*
 
 ### Rough Database Diagram
 
