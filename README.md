@@ -3,7 +3,7 @@ Using a Google BigQuery, fictitious ecommerce database, I used SQL and DAX to bu
 
 ## Data Source
 
-[Google BigQuery](https://console.cloud.google.com/)
+[Google BigQuery](https://console.cloud.google.com/) Google Open Datasets, "thelook_ecommerce"
 
 ## Project Overview
 
