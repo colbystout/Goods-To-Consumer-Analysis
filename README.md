@@ -30,16 +30,15 @@ With the VP being a very busy person, there would be very limited time to sift t
 
 I used SQL as the method to extract the data from the database. I chose not to use a live connection; rather, I used the option to make a copy of the data in the Power BI environment. Using this method increases the performance of the dashboard and removes limits on building measures and calculated columns. If I were to publish this dashboard, I would set the dashboard to refresh every night at midnight; this way, the data would be current to the most recently completed business day.
 
-### Source Query:
-
-![SourceQuery](https://user-images.githubusercontent.com/103079066/232253932-31afdcf8-afd5-42e0-a1bf-c3ca0ef8d77b.png)
-
 ## Data Model
 
 ### Source Query and Power Query
 
 1. The original SQL query extracted data for orders, where they came from, their current status, which distribution center they came from, and the items contained in each order.
-2. Next, I created a copy of this table using Power Query, deleted duplicate order IDs, and deleted product columns. This would be the table I would actually use for the report visuals and measures. My purpose for doing this was to create a clean table that focused exclusively on distribution center performance; however, I still had an original table with product information for future scalability if desired.
+
+![SourceQuery](https://user-images.githubusercontent.com/103079066/232253932-31afdcf8-afd5-42e0-a1bf-c3ca0ef8d77b.png)
+
+2. Next, I created a copy of this table using Power Query, deleted duplicate order IDs, and deleted product columns. This would be the table I would actually use for the report visuals and measures. My purpose for doing this was to create a clean table that focused exclusively on distribution center performance; however, I still had an original table with product information for future scalability, if desired.
 3. In order to maintain a scalable model using an auto calendar table, I changed each DATETIME column to a DATE column. Power BI's time intelligence feature will lock up if you attempt to utilize it with DATETIME columns. It is not designed for data at such a granular scale, nor is it necessary.
 
 ### Calculated Columns
@@ -75,3 +74,28 @@ The second part of the data modeling process required me to design some flags fo
 4. **Order Failure Target** - *the same failed shipping rate but calculated for the same period last year; for use with a KPI card*
 
 ![OrderFailureTarget](https://user-images.githubusercontent.com/103079066/232581126-330cfc9e-624d-48a3-8d7c-9e6b69fdb75f.png)
+
+## Report Construction
+
+### Pages
+
+1. **Overview** - *an overall dashboard with a high-level status pipeline, visualized as a heat map matrix; and an order failure stacked bar chart, to see how many orders consistent of failures--all filterable with a date slider*
+
+<img width="658" alt="image" src="https://user-images.githubusercontent.com/103079066/232587182-caf1c75d-87e3-41c5-83a8-1b47498abb5b.png">
+
+2. **Delayed Shipping Over Time** - *a detailed view and YoY KPI of how each distribution center performs with shipping delays over time; can be isolated to view a single distribution center and specific year*
+
+<img width="658" alt="image" src="https://user-images.githubusercontent.com/103079066/232587574-9a550187-12f2-42ee-9302-5c91da816904.png">
+
+3. **Failed Shipping Over Time** - *a detailed view and YoY KPI of how each distribution center performs with shipping failures over time; can be isolated to view a single distribution center and specific year*
+
+<img width="658" alt="image" src="https://user-images.githubusercontent.com/103079066/232587777-bfc96bbf-c940-4810-a544-0fdc645251af.png">
+
+4. **Shipping Decomp Analysis** - *a supplementary tree map to view the flow of goods to consumers and the amounts of items contained in each shipping status*
+
+<img width="317" alt="image" src="https://user-images.githubusercontent.com/103079066/232587975-18122def-d491-4965-ba46-463ec5f423a1.png">
+
+## Exploratory Analysis
+
+***Because this is a refreshable dashboard, the current analysis documented is as of 4/15/2023.***
+
